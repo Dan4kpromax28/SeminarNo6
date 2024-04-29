@@ -16,7 +16,7 @@ import lombok.*;
 public class Professor {
 
     @Setter(value = AccessLevel.NONE)
-    @Column(name = "idp")
+    @Column(name = "Idp")
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long idp;

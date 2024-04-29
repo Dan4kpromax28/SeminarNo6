@@ -14,7 +14,7 @@ import lombok.*;
 @Entity
 public class Student {
     @Setter(value = AccessLevel.NONE)
-    @Column(name = "ids")
+    @Column(name = "Ids")
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long ids;

@@ -6,6 +6,8 @@ import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.*;
 
+import java.util.Collection;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -14,7 +16,7 @@ import lombok.*;
 @Entity
 public class Course {
     @Setter(value = AccessLevel.NONE)
-    @Column(name = "idc")
+    @Column(name = "Idc")
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long idc;
@@ -29,8 +31,11 @@ public class Course {
     @Column(name = "Cp")
     private int cp;
 
+    @OneToMany(mappedBy ="course")
+    private Collection<Grade> grades;
+
     @OneToOne
-    @JoinColumn(name = "idp") // otras klases kolonna
+    @JoinColumn(name = "Idp") // otras klases kolonna
     private Professor professor;
 
     public Course(String title, int cp, Professor professor){
