@@ -12,6 +12,7 @@ import lombok.*;
 @NoArgsConstructor
 @ToString
 @Table(name = "ProfessorTable")
+@Entity
 public class Professor {
 
     @Setter(value = AccessLevel.NONE)
@@ -35,4 +36,14 @@ public class Professor {
     @Column(name = "Degree")
     @NotNull
     private Degree degree;
+
+    @OneToOne(mappedBy = "professor")
+    @ToString.Exclude
+    private Course course;
+
+    public Professor(String name, String surname, Degree degree){
+        setName(name);
+        setSurname(surname);
+        setDegree(degree);
+    }
 }
