@@ -23,4 +23,14 @@ public class Grade {
     @JoinColumn(name = "Idc") // saite uz kollonu
     private Course course;
 
+    @ManyToOne
+    @JoinColumn(name = "Ids")
+    private Student student;
+
+    public Grade(Student student, Course course, int grvalue){
+        setStudent(student);
+        setCourse(course);
+        setGrvalue(grvalue);
+    }
+
 }

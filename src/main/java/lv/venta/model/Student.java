@@ -6,6 +6,8 @@ import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.*;
 
+import java.util.Collection;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -30,4 +32,21 @@ public class Student {
     @Size(min = 2, max = 40)
     @Pattern(regexp = "[A-Za]{1}[a-z]+")
     private String surname;
+
+    @OneToMany(mappedBy = "student")
+    @ToString.Exclude
+    private Collection<Grade> grades;
+
+
+
+
+
+
+    public Student(String name, String surname) {
+        setName(name);
+        setSurname(surname);
+    }
+
+
+
 }
