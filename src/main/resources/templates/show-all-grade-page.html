@@ -1,0 +1,16 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<body>
+<p th:text = "${mytitle}"></p>
+<table>
+    <tr th:each="tempC: ${myobjs}">
+        <td th:text = "${tempC.getIdg()}"></td>
+        <td th:text = "${tempC.getCourse().getTitle()}"></td>
+        <td th:text = "${tempC.getGrvalue()}"></td>
+        <td th:text = "${tempC.getStudent().getName()}"></td>
+
+    </tr>
+</table>
+</body>
+
+</html>
