@@ -36,11 +36,13 @@ public class Course {
     private Collection<Grade> grades;
 
     @ManyToMany
-    @JoinTable(name = "CourseProffesorTable",joinColumns = @JoinColumn(name = "Idc"), inverseJoinColumns = @JoinColumn(name = "Idp"))
-    @JoinColumn(name = "Idp") // otras klases kolonna
+    @JoinTable(name = "CourseProfessorTable",
+            joinColumns = @JoinColumn(name="Idc"),
+            inverseJoinColumns = @JoinColumn(name="Idp"))
+    //@JoinColumn(name = "Idp")//otras kalses Column nosaukums
     private Collection<Professor> professors = new ArrayList<Professor>();
 
-    public Course(String title, int cp, Professor ... professor){
+    public Course(String title, int cp, Professor ... professors){
         setTitle(title);
         setCp(cp);
         for (Professor tempP : professors){

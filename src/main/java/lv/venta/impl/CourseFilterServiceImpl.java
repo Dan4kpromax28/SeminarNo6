@@ -33,7 +33,7 @@ public class CourseFilterServiceImpl implements ICourseFilterService {
     public ArrayList<Course> selectCoursesByProfessorId(long id) throws Exception {
         if (id <= 0 ) throw new Exception("Id should be positive");
         if (!professorRepo.existsById(id)) throw new Exception("There no proffesor");
-        ArrayList<Course> result = courseRepo.findByProfessorIdp(id);
+        ArrayList<Course> result = courseRepo.findByProfessorsIdp(id);
         if(result.isEmpty()) throw new Exception("There is no courses");
         return result;
     }

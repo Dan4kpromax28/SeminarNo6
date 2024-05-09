@@ -31,7 +31,7 @@ public class CourseFilterController {
         try {
             model.addAttribute("myobjs", courseService.selectCoursesByProfessorId(id));
             model.addAttribute("mytitle", "Filtered by Professor");
-            return "show-course-all-page"; //parādīsies show-all-course-page.html lapa ar atlasītajiem kursiem
+            return "show-all-course-page"; //parādīsies show-all-course-page.html lapa ar atlasītajiem kursiem
         } catch (Exception e) {
             model.addAttribute("msg", e.getMessage());
             return "error-page";//parādīsies error-page.html lapa ar konkrēto izņemuma ziņu
