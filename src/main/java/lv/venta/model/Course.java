@@ -6,6 +6,7 @@ import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.*;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 @Getter
@@ -34,13 +35,28 @@ public class Course {
     @OneToMany(mappedBy ="course")
     private Collection<Grade> grades;
 
-    @OneToOne
+    @ManyToMany
+    @JoinTable(name = "CourseProffesorTable",joinColumns = @JoinColumn(name = "Idc"), inverseJoinColumns = @JoinColumn(name = "Idp"))
     @JoinColumn(name = "Idp") // otras klases kolonna
-    private Professor professor;
+    private Collection<Professor> professors = new ArrayList<Professor>();
 
-    public Course(String title, int cp, Professor professor){
+    public Course(String title, int cp, Professor ... professor){
         setTitle(title);
         setCp(cp);
-        setProfessor(professor);
+        for (Professor tempP : professors){
+            addProfessor(tempP);
+        }
+    }
+
+    public void addProfessor(Professor professor){
+        if (!professors.contains(professor)){
+            professors.add(professor);
+        }
+    }
+
+    public void deleteProffesor(Professor professor){
+        if (professors.contains(professor)){
+            professors.remove(professor);
+        }
     }
 }

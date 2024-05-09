@@ -7,6 +7,9 @@ import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.*;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -37,13 +40,26 @@ public class Professor {
     @NotNull
     private Degree degree;
 
-    @OneToOne(mappedBy = "professor")
+    @ManyToMany
     @ToString.Exclude
-    private Course course;
+    private Collection<Course> courses = new ArrayList<Course>();
 
     public Professor(String name, String surname, Degree degree){
         setName(name);
         setSurname(surname);
         setDegree(degree);
     }
+
+    public void addCourse(Course course){
+        if (!courses.contains(course)){
+            courses.add(course);
+        }
+    }
+
+    public void deleteCourse(Course course){
+        if (courses.contains(course)){
+            courses.remove(course);
+        }
+    }
+
 }
